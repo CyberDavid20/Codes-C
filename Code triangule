@@ -24,7 +24,7 @@ printf("error introduzca datos positivos:n";
 break;
 
 case'b': case 'B':
-printf("introduzca el radio del circulo:n");
+printf("introduzca el radio del circulo:n";
 scanf("%f", &radio);
 if(radio>0){
 areaC=(2*3.14*radio);
