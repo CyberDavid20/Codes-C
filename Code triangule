@@ -1,0 +1,90 @@
+#include <stdio.h>
+
+int main (){
+
+char opcion, opcionT;
+float base, altura, areaR, radio, areaC, alturaTR, baseTR, areaTR, baseTI, alturaTI, areaTI, baseTE, alturaTE, areaTE;
+
+printf("a.- area del rectangulo:n";
+printf("b.- area del circulo:n";
+printf("c.- area del triangulo:n";
+scanf("%c", &opcion);
+switch(opcion){
+case'a': case'A':
+printf("introduzca la base del rectangulon";
+scanf("%f", &base);
+printf("introduzca la altura del rectangulon";
+scanf("%f", &altura);
+if((base>0) && (altura>0)){
+areaR=base*altura;
+printf(" el area de el rectangulo es: %.2fnn", areaR);
+}
+else
+printf("error introduzca datos positivosn";
+break;
+
+case'b': case 'B':
+printf("introduzca el radio del circulo:n";
+scanf("%f", &radio);
+if(radio>0){
+areaC=(2*3.14*radio);
+printf("el area del circulo es: %.2fnn", areaC);
+}
+else
+printf("error introduzca datos positivosn";
+
+break;
+case'c': case 'C':
+getchar();
+printf("1.-triangulo rectangulon";
+printf("2.-triangulo isocelesn";
+printf("3.-triangulo escalenon";
+scanf("%c", &opcionT);
+switch(opcionT){
+case'1':
+printf("introduzca la base del triangulo rectangulo:n";
+scanf("%f", &baseTR);
+printf("introduzca la altura del triangulo rectangulo:n";
+scanf("%f", &alturaTR);
+if ((baseTR>0) && (alturaTR>0)){
+areaTR=(baseTR*alturaTR);
+printf("el area de este triangulo rectangulo es %.2fnn", areaTR);
+}
+else
+printf("error introduzca numeros positivosn";
+break;
+case '2':
+printf("introduzca la base del triangulo isoceles:n";
+scanf("%f", &baseTI);
+printf("introduzca la altura del triangulo isoceles:n";
+scanf("%f", &alturaTI);
+if ((baseTI>0) && (alturaTI>0)){
+areaTI=(baseTI*alturaTI);
+printf("el area de este triangulo isoceles es %.2fnn", areaTI);
+}
+else
+printf("error introduzca numeros positivosn";
+break;
+
+case '3':
+printf("introduzca la base del triangulo escaleno:n";
+scanf("%f", &baseTE);
+printf("introduzca la altura del triangulo escaleno:n";
+scanf("%f", &alturaTE);
+if ((baseTE>0) && (alturaTE>0)){
+areaTE=(baseTE*alturaTE);
+printf("el area de este triangulo escaleno es %.2fnn", areaTE);
+}
+else
+printf("error introduzca numeros positivosn";
+break;
+default:
+
+printf("error escoja una de las opciones en el menun";
+}
+break;
+default:
+printf("introduzca una opcion del menun";
+}
+return 0;
+}
