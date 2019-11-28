@@ -1,0 +1,142 @@
+#include <stdio.h>
+
+int **CreaMA(int nfa,int nca);
+int **CreaMB(int nf,int nc);
+void Captura(int **MA,int nfa, int nca);
+void Buscaminas(int **MA,int **MB,int nfa,int nca);
+void Imprime(int **MA, int **MB, int nfa, int nca,int nf,int nc);
+
+int main(){
+    
+    int **MA = 0;
+    int **MB = 0;
+	int nf,nc,nfa,nca;
+	scanf("%d %d", &nf,&nc);
+	nfa = nf + 2;
+	nca = nc + 2;
+	MA = CreaMA(nfa,nca);
+	MB = CreaMB(nf,nc);
+	Captura(MA,nfa,nca);
+	Buscaminas(MA,MB,nfa,nca);
+	Imprime(MA,MB,nfa,nca,nf,nc);
+	return 0;    
+}
+
+int **CreaMA(int nfa,int nca)
+{
+    int i = 0;
+    int **MA = 0;
+    
+    MA = malloc(sizeof(int*)*nfa);
+    
+    for(i=0;i<nca;i++)
+    {
+        MA[i] = malloc(sizeof(int)*nca);
+    }
+    return MA;
+}
+
+
+int **CreaMB(int nf,int nc)
+{
+    int i = 0;
+    int **MB = 0;
+    
+    MB = malloc(sizeof(int*)*nf);
+    
+    for(i=0;i<nc;i++)
+    {
+        MB[i] = malloc(sizeof(int)*nc);
+    }
+    return MB;
+}
+
+void Captura(int **MA,int nfa,int nca)
+{
+    int i,j = 0;
+    
+    for(i=1;i<nfa-1;i++)
+    {
+        for(j=1;j<nca-1;j++)
+        {
+            scanf("%i",&MA[i][j]);
+        }
+    }
+return;
+}
+
+void Buscaminas(int **MA,int **MB,int nfa,int nca)
+{
+    int i,j = 0;
+    int contador = 0;
+    
+    for(i=1;i<nfa;i++)
+    {
+        for(j=1;j<nca;j++)
+        {
+            MA[i][j];
+            contador = 0;
+            
+            if(MA[i][j] == 1){
+                contador++;
+            }
+            if(MA[i-1][j] == 1){
+                contador++;
+            }
+            if (MA[i+1][j] == 1){
+                contador++;
+            }
+            if (MA[i-1][j-1] == 1){
+                contador++;
+            }
+            if(MA[i][j-1] == 1){
+                contador++;
+            }
+            if(MA[i+1][j-1] == 1){
+                contador++;
+            }
+            if(MA[i-1][j+1] == 1){
+                contador++;
+            }
+            if(MA[i][j+1] == 1){
+                contador++;
+            }
+            
+            if(MA[i+1][j+1] == 1)
+            {contador++;
+            }
+            
+            MB[i-1][j-1] = contador;    
+            
+        }
+    }
+    return;
+}
+
+void Imprime(int **MA, int **MB, int nfa, int nca,int nf,int nc)
+{
+    int i,j = 0;
+    
+    for(i=0;i<nfa;i++)
+    {
+        for(j=0;j<nca;j++)
+        {
+            printf("%d\t",MA[i][j]);
+        }
+        printf("\n");
+    }
+    
+    printf("\n");
+    
+    for(i=0;i<nf;i++)
+    {
+        for(j=0;j<nc;j++)
+        {
+            printf("%d\t",MB[i][j]);
+        }
+        printf("\n");
+    }
+    return;
+}
+
+
